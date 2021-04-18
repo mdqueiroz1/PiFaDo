@@ -1,9 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "cartas.c"
+#include <string.h>
+
+#include "Baralho.c"
+#include "Menu.c"
+#include "Impressao.c"
 
 int main(){
-    B1 *ptrB1;
-    ptrB1 = (B1*) malloc(sizeof(B1));
+    
+    int loop=0;
+
+    char carta1[2];
+    strcpy(carta1, "AO");
+    imprimeCarta(carta1,1);
+    /*
+    do{
+        loop = menu();
+    }while(loop != 9);
+    */
+    return 0;
 }
