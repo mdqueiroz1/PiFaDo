@@ -1,3 +1,11 @@
+/*
+Autores: Matheus Dias de Queiroz
+         Marcos Aurelio Duarte
+
+*/
+
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
