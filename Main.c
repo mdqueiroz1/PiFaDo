@@ -1,31 +1,47 @@
-/*
-Autores: Matheus Dias de Queiroz
-         Marcos Aurelio Duarte
-
-*/
-
-
-
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include <string.h>
-
+#include "BBT_LSE.c"
+#include "BBT_Fila.c"
+#include "BBT_Pilha.c"
+#include "BBT_DequeDinamico.c"
 #include "Baralho.c"
-#include "Menu.c"
-#include "Impressao.c"
+
+int menu(Fila *ptrF){
+    int loop=1;
+    printf("1- Iniciar jogo\n");
+    scanf("%d", &loop);
+    switch (loop){
+        case 1:{
+            listaFilaClassico(ptrF);
+            break;
+        }
+        case 2:{
+
+            break;
+        }
+   
+    }
+    return loop;
+}
 
 int main(){
-    
-    int loop=0;
-
-    char carta1[2];
-    strcpy(carta1, "AO");
-    imprimeCarta(carta1,1);
+    LSE *ptrLSE;
+    initLSE(&ptrLSE);
     /*
-    do{
-        loop = menu();
-    }while(loop != 9);
+    pilha extra;
+    DEQUE principal;
     */
+    Fila Baralho1;
+    initFila(&Baralho1);
+    inicializaBaralho(&ptrLSE);
+    embaralhaLDE(&ptrLSE, &Baralho1);
+
+    int loop;
+
+    do{
+        loop = menu(&Baralho1);
+    }while(loop != 1);
+    
     return 0;
 }
