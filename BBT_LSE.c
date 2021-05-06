@@ -16,10 +16,6 @@ LSE* alocarLSE(){
     return (LSE*) malloc(sizeof(LSE));
 }
 
-void desalocarLSE(LSE *ptrLSE){
-    free(ptrLSE);
-}
-
 int listaVazia(LSE *ptrLSE){
     if(ptrLSE == NULL){
         printf("Lista Vazia!\n");
@@ -59,21 +55,22 @@ int imprimeListaLSE(LSE *ptrLista){
     return 0;
 }
 
-void removeCelulaLDE(LSE **ptrL, LSE **no){
-    if((*no) == NULL) return;
+void removeCelulaLDE(LSE **ptrL, LSE *no){
+    if((*ptrL) == NULL) return;
     
-    if((*no)->esq == NULL){
-        ((*no)->dir)->esq = NULL;
-    }else{
-        if((*no)->dir == NULL){
-            ((*no)->esq)->dir = NULL;
-        }else{
-            ((*no)->esq)->dir = (*no)->dir;
-            ((*no)->dir)->esq = (*no)->esq;
-        }
-    }
+    if(no->esq == NULL){
+        (*ptrL) = no->dir;
+        (*ptrL)->esq = NULL;
+        free(no);
+        return;
+    }else
+        (no->esq)->dir = no->dir;
 
-    desalocarLSE(*no);
-    printf("chegou aq\n");
+    if(no->dir != NULL)
+        (no->dir)->esq = no->esq;
+    else
+        (no->esq)->dir = NULL;
+
+    free(no);    
 }
         

@@ -10,7 +10,7 @@
 int menu(Fila *ptrF){
     int loop=1;
     printf("1- Iniciar jogo\n");
-    scanf("%d", &loop);
+    //scanf("%d", &loop);
     switch (loop){
         case 1:{
             listaFilaClassico(ptrF);

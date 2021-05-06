@@ -63,32 +63,30 @@ void inicializaBaralho(LSE **ptrBaralho){
 
 /*
 Função feita para construir o baralho embaralhado, pegando
-o padrÃ£o, buscando um numero entre 1 e 54 e alocando essa carta
+o padrÃ£o, buscando um numero entre 1 e 52 e alocando essa carta
 no deque de cartas embaralhadas.
 */
 void embaralhaLDE (LSE **ptrL, Fila *ptrF){
     LSE *aux;
     aux = (*ptrL);
-    int cont = 54;
+    int cont = 52;
     int numRand;
-    srand( (unsigned)time(NULL) );
-    
+    srand( (unsigned) time (NULL) );
     /*
-    Função criada para gerar 54 numeros aleatórios para embaralhar o baralho     
+    Função criada para gerar 52 numeros aleatórios para embaralhar o baralho     
     */
-    for (int i = 0; i < 54; i++){
+    for (int i = 0; i < 52; i++){
         numRand = rand()%cont;
-        printf("%d %d ", i,numRand);
+        printf("%d ", i);
         for(int j = 0; j < numRand; j++){
             aux = aux->dir;
         }
-        printf("%s\n", aux->carta);
+        printf("%s ", aux->carta, aux);
         
         //insereFila(ptrF->inicio, aux->carta);
-        removeCelulaLDE(ptrL, &aux);
+        removeCelulaLDE(*ptrL, aux);
         
-        if(*ptrL != NULL)
-            aux = *ptrL;
+        aux = *ptrL;
         cont --;
     }
 }
