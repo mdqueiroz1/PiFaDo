@@ -6,14 +6,16 @@
 #include "BBT_Pilha.c"
 #include "BBT_DequeDinamico.c"
 #include "Baralho.c"
+#include "Engine.c"
 
 int menu(Fila *ptrF){
-    int loop=1;
+    int loop;
     printf("1- Iniciar jogo\n");
-    //scanf("%d", &loop);
+    printf("2- Creditos\n");
+    scanf("%d", &loop);
     switch (loop){
         case 1:{
-            listaFilaClassico(ptrF);
+            iniciaJogo(ptrF);
             break;
         }
         case 2:{
@@ -26,14 +28,13 @@ int menu(Fila *ptrF){
 }
 
 int main(){
+    //inicializar o baralho base
     LSE *ptrLSE;
     initLSE(&ptrLSE);
-    /*
-    pilha extra;
-    DEQUE principal;
-    */
+    //definição do baralho de jogo
     Fila Baralho1;
     initFila(&Baralho1);
+    //embaralha o baralho para o jogo
     inicializaBaralho(&ptrLSE);
     embaralhaLDE(&ptrLSE, &Baralho1);
 

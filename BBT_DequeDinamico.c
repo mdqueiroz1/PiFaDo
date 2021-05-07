@@ -3,7 +3,7 @@
 #include <string.h>
 
 typedef struct sNoDeque{
-    char carta[2];
+    int carta, naipe;
     struct sNoDeque *dir;
     struct sNoDeque *esq;
 }NoDeque;
@@ -19,7 +19,9 @@ NoDeque* alocaNoDeque(){
 }
 
 void initDeque(DEQUE *ptrD){
+    ptrD = (DEQUE*) malloc(sizeof(DEQUE));
     ptrD->inicio = NULL;
+    printf("123\n");
     ptrD->final = NULL;
     ptrD->qnt = 0;
 }
@@ -30,7 +32,7 @@ int vazioDeque(DEQUE *ptrD){
     return 0;
 }
 
-void insereInicioDeque(DEQUE *ptrD, char *elem){
+void insereInicioDeque(DEQUE *ptrD, int carta, int naipe){
     if(ptrD == NULL){
         printf("Deque nao inicializado!\n");
         return;
@@ -43,7 +45,8 @@ void insereInicioDeque(DEQUE *ptrD, char *elem){
         return;
     }
     
-    strcpy(novo->carta, elem);
+    novo->carta = carta;
+    novo->naipe = naipe;
     novo->dir = ptrD->inicio;
     novo->esq = NULL;
 
@@ -54,6 +57,26 @@ void insereInicioDeque(DEQUE *ptrD, char *elem){
     }
 
     ptrD->inicio = novo;
+    ptrD->qnt += 1;
+}
+
+void insereFinalDeque(DEQUE *ptrD, int carta, int naipe){
+    NoDeque* novo;
+    novo = alocaNoDeque();
+    if(novo == NULL) return;
+
+    novo->carta = carta;
+    novo->naipe = naipe;
+    novo->dir = NULL;
+
+    if(vazioDeque(ptrD) == 1){
+        ptrD->inicio = novo;
+        ptrD->final = novo;
+    }else{
+        (ptrD->final)->dir = novo;
+        novo->esq = ptrD->final;
+        ptrD->final = novo;
+    }
     ptrD->qnt += 1;
 }
 
@@ -71,25 +94,6 @@ void removeFinalDeque(DEQUE *ptrD){
     }
     free(aux);
     ptrD->qnt -= 1;
-}
-
-void insereFinalDeque(DEQUE *ptrD, char *elem){
-    NoDeque* novo;
-    novo = alocaNoDeque();
-    if(novo == NULL) return;
-
-    strcpy(novo->carta, elem);
-    novo->dir = NULL;
-
-    if(vazioDeque(ptrD) == 1){
-        ptrD->inicio = novo;
-        ptrD->final = novo;
-    }else{
-        (ptrD->final)->dir = novo;
-        novo->esq = ptrD->final;
-        ptrD->final = novo;
-    }
-    ptrD->qnt += 1;
 }
 
 void removeInicioDeque(DEQUE *ptrD){
@@ -115,7 +119,7 @@ void listaDequeNaoClassico(DEQUE *ptrD){
     aux = ptrD->inicio;
     
     while(aux != NULL){
-        printf("%s\t", aux->carta);
+        printf("%d%d\t", aux->carta, aux->naipe);
         aux = aux->dir;
     }
     printf("\n");
@@ -126,7 +130,7 @@ void listaDequeClassico(DEQUE *ptrD){
     if(vazioDeque(ptrD)) return;
 
     while(ptrD->inicio != NULL){
-        printf("%s\t", ptrD->inicio->carta);
+        printf("%d%d\t", ptrD->inicio->carta, ptrD->inicio->naipe);
         removeInicioDeque(ptrD);
     }
 

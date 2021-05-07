@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 typedef struct sPilha{
-    char carta[2];
+    int carta, naipe;
     struct sPilha *dir;
 }pilha;
 
@@ -23,12 +23,13 @@ int vaziaPilha(pilha *ptrP){
     return 0;
 }
 
-void inserePilha(pilha **ptrP, char *elem){
+void inserePilha(pilha **ptrP, int carta, int naipe){
     pilha *novo;
     novo = alocaNoPilha();
     if ( novo == NULL ) return;
     printf("passou!\n");
-    strcpy(novo->carta, elem);
+    novo->carta = carta;
+    novo->naipe = naipe;
     novo->dir = *ptrP;
     
     *ptrP = novo;
@@ -57,7 +58,7 @@ void listaPilhaClassico(pilha *ptrP){
     pilha *aux;
 
     while(ptrP != NULL){
-        printf("%s\n", ptrP->carta);
+        printf("%d%d\n", ptrP->carta, ptrP->naipe);
         aux = ptrP;
         ptrP = ptrP->dir;
         removePilha(&aux);
@@ -74,7 +75,7 @@ void listaPilhaNaoClassico(pilha *ptrP){
     aux = ptrP;
 
     while(!vaziaPilha(aux)){
-        printf("%s\n", aux->carta);
+        printf("%d%d\n", aux->carta, aux->naipe);
         aux = aux->dir;
     }
 }

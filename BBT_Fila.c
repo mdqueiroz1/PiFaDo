@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 typedef struct sNoFila{
-    char carta[2];
+    int carta,naipe;
     struct sNoFila *dir;
 }NoFila;
 
@@ -17,6 +18,7 @@ NoFila* alocaNoFila(){
 }
 
 void initFila(Fila *ptrF){
+    //ptrF = (Fila*) malloc(sizeof(Fila));
     ptrF->inicio = NULL;
     ptrF->final = NULL;
 }
@@ -27,13 +29,14 @@ int vazioFila(Fila *ptrF){
     return 0;
 }
 
-void insereFila(Fila *ptrF, char *elem){
+void insereFila(Fila *ptrF, int carta, int naipe){
     if(ptrF == NULL) return;
     NoFila *novo;
     novo = alocaNoFila();
     novo->dir = NULL;
 
-    strcpy(novo->carta, elem);
+    novo->carta = carta;
+    novo->naipe = naipe;
 
     if(ptrF->inicio == NULL){
     
@@ -65,9 +68,18 @@ void removeFila(Fila *ptrF){
     free(novo);
 }
 
+void inicioFila(Fila *ptrF){
+    if(ptrF == NULL) return;
+    if(vazioFila(ptrF)) return;
+    
+    printf("%d%d\n", ptrF->inicio->carta, ptrF->inicio->naipe);
+}
+
 void listaFilaClassico(Fila *ptrF){
     if(ptrF == NULL) return;
     if(vazioFila(ptrF)) return;
-
-    printf("%s\n", ptrF->inicio->carta);
+    while(!vazioFila(ptrF)){
+        printf("%d%d\n", ptrF->inicio->carta, ptrF->inicio->naipe);
+        removeFila(ptrF);
+    }
 }

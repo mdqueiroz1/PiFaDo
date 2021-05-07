@@ -11,54 +11,11 @@ void inicializaBaralho(LSE **ptrBaralho){
     char naipe[1];
 
     for(int i = 0; i < 4; i++){
-        switch (i){
-            case 0:
-                strcpy(naipe,"O");
-                break;
-            
-            case 1:{
-                strcpy(naipe , "P");
-                break;
-            }
-            case 2:{
-                strcpy(naipe , "E");
-                break;
-            }
-            case 3:{
-                strcpy(naipe , "C");
-                break;
-            }
-        }
         for (int j = 0; j < 13; j++){
-            int num = j+1;
-            if(num == 1 || num > 10){
-                switch (num){
-                    case 1:{
-                        strcpy(str, "A");
-                        strncat(str, naipe,1);
-                        break;
-                    }
-                    case 11:{
-                        strcpy(str, "J");
-                        strncat(str, naipe,1);                        
-                        break;
-                    }
-                    case 12:{
-                        strcpy(str, "Q");
-                        strncat(str, naipe,1);
-                        break;
-                    }
-                    case 13:{
-                        strcpy(str, "K");
-                        strncat(str, naipe,1);
-                    }
-                }
-            }else{
-                strncat(itoa(num, str, 10), naipe,1);
-            }
-            inserirInicioLSE(ptrBaralho, str);
+            inserirInicioLSE(ptrBaralho, (i+1), (j+1));
         }
     }
+    printf("\n");
 }
 
 /*
@@ -75,18 +32,25 @@ void embaralhaLDE (LSE **ptrL, Fila *ptrF){
     /*
     Função criada para gerar 52 numeros aleatórios para embaralhar o baralho     
     */
-    for (int i = 0; i < 52; i++){
+    /*for (int i = 0; i < 52; i++){
         numRand = rand()%cont;
         printf("%d ", i);
         for(int j = 0; j < numRand; j++){
             aux = aux->dir;
         }
-        printf("%s ", aux->carta, aux);
+        printf("%d%d ", aux->carta, aux->naipe);
         
-        //insereFila(ptrF->inicio, aux->carta);
-        removeCelulaLDE(*ptrL, aux);
+        insereFila(ptrF->inicio, aux->carta, aux->naipe);
+        //removeCelulaLDE(ptrL, aux);
         
         aux = *ptrL;
         cont --;
+    }*/
+
+    for (int k = 0; k < 52; k++){
+        printf("%d%d ", aux->carta, aux->naipe);
+        insereFila(ptrF, aux->carta,aux->naipe);
+        aux = aux->dir;
     }
+    
 }
