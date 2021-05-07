@@ -28,7 +28,7 @@ void embaralhaLDE (LSE **ptrL, Fila *ptrF){
     aux = (*ptrL);
     int cont = 52;
     int numRand;
-    srand( (unsigned) time (NULL) );
+    srand( (unsigned) time (NULL));
     /*
     Função criada para gerar 52 numeros aleatórios para embaralhar o baralho     
     */
@@ -41,7 +41,7 @@ void embaralhaLDE (LSE **ptrL, Fila *ptrF){
         printf("%d%d ", aux->carta, aux->naipe);
         
         insereFila(ptrF->inicio, aux->carta, aux->naipe);
-        //removeCelulaLDE(ptrL, aux);
+        removeCelulaLDE(ptrL, aux);
         
         aux = *ptrL;
         cont --;
