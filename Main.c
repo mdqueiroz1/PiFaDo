@@ -7,7 +7,7 @@
 #include "BBT_DequeDinamico.c"
 #include "Baralho.c"
 #include "Engine.c"
-//oi matheus
+
 int menu(Fila *ptrF){
     int loop;
     printf("1- Iniciar jogo\n");
@@ -19,7 +19,7 @@ int menu(Fila *ptrF){
             break;
         }
         case 2:{
-            printf("oi");
+            printf("Matheus Dias de Queiroz\n Marcos Aurelio Duarte Souza\n");
             break;
         }
    
