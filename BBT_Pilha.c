@@ -11,6 +11,7 @@ pilha* alocaNoPilha(){
 }
 
 void initPilha(pilha *ptrP){
+    ptrP = alocaNoPilha();
     ptrP->dir = NULL;
     if ( ptrP == NULL ){
         printf("Erro na alocacao do no\n");

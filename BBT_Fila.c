@@ -13,12 +13,13 @@ typedef struct sFila{
     NoFila *final;
 }Fila;
 
-NoFila* alocaNoFila(){
-    return (NoFila*) malloc(sizeof(NoFila));
+Fila* alocaFila(){
+    return (Fila*) malloc(sizeof(Fila));
 }
 
+
 void initFila(Fila *ptrF){
-    //ptrF = (Fila*) malloc(sizeof(Fila));
+    ptrF = alocaFila();
     ptrF->inicio = NULL;
     ptrF->final = NULL;
 }
@@ -31,21 +32,23 @@ int vazioFila(Fila *ptrF){
 
 void insereFila(Fila *ptrF, int carta, int naipe){
     if(ptrF == NULL) return;
+    
     NoFila *novo;
-    novo = alocaNoFila();
-    novo->dir = NULL;
-
+    novo = (NoFila*) malloc(sizeof(NoFila));
+    if(novo == NULL) return;
     novo->carta = carta;
     novo->naipe = naipe;
-
-    if(ptrF->inicio == NULL){
     
+    novo->dir = NULL;
+
+    if(ptrF->final == NULL)
         ptrF->inicio = novo;
-        ptrF->final = novo;
-        return;
-    }
-    ptrF->final->dir = novo;
+    else
+        ptrF->final->dir = novo;
+    
     ptrF->final = novo;
+    printf("entrou na fila\n\n");
+
 }
 
 void removeFila(Fila *ptrF){
@@ -58,7 +61,7 @@ void removeFila(Fila *ptrF){
     }
 
     NoFila *novo;
-    novo = alocaNoFila();
+    novo = (NoFila*) malloc(sizeof(NoFila));
     novo = ptrF->inicio;
     ptrF->inicio = ptrF->inicio->dir;
 

@@ -252,9 +252,18 @@ void imprimeCarta(Fila *ptrF){
 	*/
 }
 
-void iniciaJogo(Fila *baralho1){
-    DEQUE *montePrincipal;
-    initDeque(montePrincipal);
+void iniciaJogo(jogador *ptrJ1, jogador *ptrJ2){
+	//Inicializando baralho principal
+	LDE *ptrLDE;
+	initLDE(&ptrLDE);
+	inicializaBaralho(&ptrLDE);
+	embaralhaLDE(&ptrLDE, ptrJ1->baralhoPrincipal);
+
+	listaFilaClassico(ptrJ1->baralhoPrincipal);
+	
+	inicializaBaralho(&ptrLDE);
+	embaralhaLDE(&ptrLDE, ptrJ2->baralhoPrincipal);
+	/*
     int menu;
     //system("cls");
     //imprimir tabuleiro
@@ -274,6 +283,15 @@ void iniciaJogo(Fila *baralho1){
             scanf("%d", &caso1);
             switch (caso1){
                 case 1:{
+					if(montePrincipal == NULL){
+						insereInicioDeque(montePrincipal,baralho1->inicio->carta, baralho1->inicio->naipe);
+					}else{
+						if(montePrincipal->inicio->carta >= baralho1->inicio->carta){
+							insereInicioDeque(montePrincipal, baralho1->inicio->carta, baralho1->inicio->naipe);
+						}else{
+							insereFinalDeque(montePrincipal, baralho1->inicio->carta, baralho1->inicio->naipe);
+						}
+					}
                     printf("adicionado no monte principal\n");
                     break;
                 }
@@ -290,5 +308,5 @@ void iniciaJogo(Fila *baralho1){
             break;
         }
     }
-
+	*/
 }

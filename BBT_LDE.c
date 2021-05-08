@@ -8,16 +8,15 @@ typedef struct sLSE{
     struct sLSE *esq; 
 }LDE;
 
-void initLSE(LDE **ptrLSE){
-   // *ptrLSE = alocarLSE();
-    *ptrLSE = NULL;
-}
-
-LDE* alocarLSE(){
+LDE* alocarLDE(){
     return (LDE*) malloc(sizeof(LDE));
 }
 
-int listaVaziaLSE(LDE *ptrLSE){
+void initLDE(LDE **ptrLSE){
+    *ptrLSE = NULL;
+}
+
+int listaVaziaLDE(LDE *ptrLSE){
     if(ptrLSE == NULL){
         printf("Lista Vazia!\n");
         return 1;
@@ -26,26 +25,25 @@ int listaVaziaLSE(LDE *ptrLSE){
     }
 }
 
-void inserirInicioLSE(LDE **ptrLista, int carta, int naipe){
+void inserirInicioLDE(LDE **ptrLista, int carta, int naipe){
     LDE *aux;
-
-    aux = alocarLSE();
+    aux = alocarLDE();
+    if(aux == NULL) return;
     
-    if(aux != NULL){
-        aux->carta = carta;
-        aux->naipe = naipe;
-        aux->dir = (*ptrLista);
-        *ptrLista = aux;
-    }else{
-        printf("Erro ao alocar o LDE.\n");
-        exit(1);
-    }
+    aux->carta = carta;
+    aux->naipe = naipe;
+    aux->dir = (*ptrLista);
+    aux->esq = NULL;
+
+    if((*ptrLista) != NULL)
+        (*ptrLista)->esq = aux;
+    (*ptrLista) = aux;
 }
 
 void removeInicioLDE(LDE **ptrL){
     LDE *aux;
     aux = *ptrL;
-    if(!listaVaziaLSE(*ptrL)){
+    if(!listaVaziaLDE(*ptrL)){
         *ptrL = aux->dir;
         (*ptrL)->esq = NULL;
         free(aux);
@@ -56,23 +54,24 @@ void removeInicioLDE(LDE **ptrL){
 
 void removeCelulaLDE(LDE **ptrL, LDE *no){
     if((*ptrL) == NULL) return;
+
+    if(no == NULL) return;
+    if(no->esq == NULL)
+        *ptrL = no->dir;
+    else
+        no->esq->dir = no->dir;
     
-    if(no == *ptrL)
-        removeInicioLDE(&no);
-    else{
-        (no->esq)->dir = no->dir;
-        if(no->dir != NULL)
-            (no->dir)->esq = no->esq;
-        
-        free(no);
-    }
+    if(no->dir != NULL)
+        no->dir->esq = no->esq;
+    
+    free(no);
 }
 
-int imprimeListaLSE(LDE *ptrLista){
+int imprimeListaLDE(LDE *ptrLista){
     LDE *aux;
     aux = ptrLista;
 
-    if(listaVaziaLSE(aux)){
+    if(listaVaziaLDE(aux)){
         return 1;
     }else{
         while(aux != NULL){

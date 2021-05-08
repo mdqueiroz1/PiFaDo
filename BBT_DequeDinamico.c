@@ -21,7 +21,6 @@ NoDeque* alocaNoDeque(){
 void initDeque(DEQUE *ptrD){
     ptrD = (DEQUE*) malloc(sizeof(DEQUE));
     ptrD->inicio = NULL;
-    printf("123\n");
     ptrD->final = NULL;
     ptrD->qnt = 0;
 }

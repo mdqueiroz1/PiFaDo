@@ -8,9 +8,9 @@
 #include "Baralho.c"
 #include "Engine.c"
 
-int menu(Fila *ptrF){
+int menu(jogador *ptrJ1, jogador *ptrJ2){
     int loop;
-    system("cls");
+    //system("cls");
 	printf("8888888b.  d8b 8888888888       8888888b.\n");           
 	printf("888   Y88b Y8P 888              888  \"Y88b\n");          
 	printf("888    888     888              888    888\n");          
@@ -27,7 +27,7 @@ int menu(Fila *ptrF){
     scanf("%d", &loop);
     switch (loop){
         case 1:{
-            iniciaJogo(ptrF);
+            iniciaJogo(ptrJ1, ptrJ2);
             break;
         }
         case 2:{
@@ -45,20 +45,16 @@ int menu(Fila *ptrF){
 }
 
 int main(){
-    //inicializar o baralho base
-    LDE *ptrLSE;
-    initLSE(&ptrLSE);
-    //definição do baralho de jogo
-    Fila Baralho1;
-    initFila(&Baralho1);
-    //embaralha o baralho para o jogo
-    inicializaBaralho(&ptrLSE);
-    embaralhaLDE(&ptrLSE, &Baralho1);
-
+    //inicializar jogadores
+    jogador *jogador1;
+    jogador *jogador2;
+    initJogador(jogador1);
+    initJogador(jogador2);
+    printf("aqui\n");
     int loop;
 
     do{
-        loop = menu(&Baralho1);
+        loop = menu(jogador1, jogador2);
     }while(loop != 9);
     
     return 0;
