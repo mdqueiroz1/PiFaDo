@@ -6,18 +6,18 @@ typedef struct sLSE{
     int carta, naipe;
     struct sLSE *dir;
     struct sLSE *esq; 
-}LSE;
+}LDE;
 
-void initLSE(LSE **ptrLSE){
+void initLSE(LDE **ptrLSE){
    // *ptrLSE = alocarLSE();
     *ptrLSE = NULL;
 }
 
-LSE* alocarLSE(){
-    return (LSE*) malloc(sizeof(LSE));
+LDE* alocarLSE(){
+    return (LDE*) malloc(sizeof(LDE));
 }
 
-int listaVaziaLSE(LSE *ptrLSE){
+int listaVaziaLSE(LDE *ptrLSE){
     if(ptrLSE == NULL){
         printf("Lista Vazia!\n");
         return 1;
@@ -26,8 +26,8 @@ int listaVaziaLSE(LSE *ptrLSE){
     }
 }
 
-void inserirInicioLSE(LSE **ptrLista, int carta, int naipe){
-    LSE *aux;
+void inserirInicioLSE(LDE **ptrLista, int carta, int naipe){
+    LDE *aux;
 
     aux = alocarLSE();
     
@@ -37,13 +37,13 @@ void inserirInicioLSE(LSE **ptrLista, int carta, int naipe){
         aux->dir = (*ptrLista);
         *ptrLista = aux;
     }else{
-        printf("Erro ao alocar o LSE.\n");
+        printf("Erro ao alocar o LDE.\n");
         exit(1);
     }
 }
 
-void removeInicioLDE(LSE **ptrL){
-    LSE *aux;
+void removeInicioLDE(LDE **ptrL){
+    LDE *aux;
     aux = *ptrL;
     if(!listaVaziaLSE(*ptrL)){
         *ptrL = aux->dir;
@@ -54,7 +54,7 @@ void removeInicioLDE(LSE **ptrL){
     }
 }
 
-void removeCelulaLDE(LSE **ptrL, LSE *no){
+void removeCelulaLDE(LDE **ptrL, LDE *no){
     if((*ptrL) == NULL) return;
     
     if(no == *ptrL)
@@ -68,8 +68,8 @@ void removeCelulaLDE(LSE **ptrL, LSE *no){
     }
 }
 
-int imprimeListaLSE(LSE *ptrLista){
-    LSE *aux;
+int imprimeListaLSE(LDE *ptrLista){
+    LDE *aux;
     aux = ptrLista;
 
     if(listaVaziaLSE(aux)){

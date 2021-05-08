@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "BBT_LSE.c"
+#include "BBT_LDE.c"
 #include "BBT_Fila.c"
 #include "BBT_Pilha.c"
 #include "BBT_DequeDinamico.c"
@@ -29,7 +29,7 @@ int menu(Fila *ptrF){
 
 int main(){
     //inicializar o baralho base
-    LSE *ptrLSE;
+    LDE *ptrLSE;
     initLSE(&ptrLSE);
     //definição do baralho de jogo
     Fila Baralho1;

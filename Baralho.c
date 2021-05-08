@@ -6,7 +6,7 @@
 A função irá inicializar o baralho em ordem crescente,
 logo após o baralho será embaralhado.
 */
-void inicializaBaralho(LSE **ptrBaralho){
+void inicializaBaralho(LDE **ptrBaralho){
     char str[3];
     char naipe[1];
 
@@ -23,8 +23,8 @@ Função feita para construir o baralho embaralhado, pegando
 o padrÃ£o, buscando um numero entre 1 e 52 e alocando essa carta
 no deque de cartas embaralhadas.
 */
-void embaralhaLDE (LSE **ptrL, Fila *ptrF){
-    LSE *aux;
+void embaralhaLDE (LDE **ptrL, Fila *ptrF){
+    LDE *aux;
     aux = (*ptrL);
     int cont = 52;
     int numRand;
