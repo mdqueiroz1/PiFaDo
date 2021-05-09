@@ -258,9 +258,9 @@ void iniciaJogo(jogador *ptrJ1, jogador *ptrJ2){
 	initLDE(&ptrLDE);
 	inicializaBaralho(&ptrLDE);
 	embaralhaLDE(&ptrLDE, ptrJ1->baralhoPrincipal);
-
-	listaFilaClassico(ptrJ1->baralhoPrincipal);
 	
+	listaFilaClassico(ptrJ1->baralhoPrincipal);
+
 	inicializaBaralho(&ptrLDE);
 	embaralhaLDE(&ptrLDE, ptrJ2->baralhoPrincipal);
 	/*

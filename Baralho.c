@@ -16,7 +16,6 @@ void initJogador(jogador *ptrJ){
     initDeque(ptrJ->montePrincipal);
     //initFila(ptrJ->baralhoPrincipal);
     initPilha(ptrJ->monteExtra);
-        printf("123\n");
     ptrJ->pontuacao = 0;
 }
 
@@ -52,8 +51,10 @@ void embaralhaLDE (LDE **ptrL, Fila *ptrF){
             aux = aux->dir;
         }
         insereFila(ptrF, aux->carta, aux->naipe);
+        for(int i = 0; i<1000;i++){
+	    }
         removeCelulaLDE(ptrL, aux);
-        imprimeListaLDE(*ptrL);
+        
         aux = *ptrL;
         cont --;
     }

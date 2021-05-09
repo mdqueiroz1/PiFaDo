@@ -10,7 +10,7 @@
 
 int menu(jogador *ptrJ1, jogador *ptrJ2){
     int loop;
-    //system("cls");
+    system("cls");
 	printf("8888888b.  d8b 8888888888       8888888b.\n");           
 	printf("888   Y88b Y8P 888              888  \"Y88b\n");          
 	printf("888    888     888              888    888\n");          
@@ -19,7 +19,7 @@ int menu(jogador *ptrJ1, jogador *ptrJ2){
 	printf("888        888 888     .d888888 888    888 888  888\n"); 
 	printf("888        888 888     888  888 888  .d88P Y88..88P\n"); 
 	printf("888        888 888     \"Y888888 8888888P\"   \"Y88P\"\n");
-	printf("\t\tPife Adaptado\n\n");         
+	printf("\n\t\tPife Adaptado\n\n");         
 
  	printf("1 - Iniciar Jogo\n");
     printf("2 - Creditos\n");

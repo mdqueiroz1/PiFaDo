@@ -28,7 +28,6 @@ void inserePilha(pilha **ptrP, int carta, int naipe){
     pilha *novo;
     novo = alocaNoPilha();
     if ( novo == NULL ) return;
-    printf("passou!\n");
     novo->carta = carta;
     novo->naipe = naipe;
     novo->dir = *ptrP;

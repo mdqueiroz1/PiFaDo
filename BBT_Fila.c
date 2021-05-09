@@ -40,7 +40,6 @@ void insereFila(Fila *ptrF, int carta, int naipe){
     
     novo->dir = NULL;
     if(ptrF->inicio == NULL){
-    printf("chegou aqui.\n");
         ptrF->inicio = novo;
         ptrF->final = novo;
     }else{
