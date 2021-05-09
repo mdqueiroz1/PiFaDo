@@ -14,7 +14,7 @@ void initJogador(jogador *ptrJ){
     ptrJ = (jogador*) malloc(sizeof(jogador));
 
     initDeque(ptrJ->montePrincipal);
-    initFila(ptrJ->baralhoPrincipal);
+    //initFila(ptrJ->baralhoPrincipal);
     initPilha(ptrJ->monteExtra);
         printf("123\n");
     ptrJ->pontuacao = 0;

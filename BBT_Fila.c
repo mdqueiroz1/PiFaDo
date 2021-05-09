@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 typedef struct sNoFila{
     int carta,naipe;
     struct sNoFila *dir;
@@ -40,14 +39,14 @@ void insereFila(Fila *ptrF, int carta, int naipe){
     novo->naipe = naipe;
     
     novo->dir = NULL;
-
-    if(ptrF->final == NULL)
+    if(ptrF->inicio == NULL){
+    printf("chegou aqui.\n");
         ptrF->inicio = novo;
-    else
-        ptrF->final->dir = novo;
-    
-    ptrF->final = novo;
-    printf("entrou na fila\n\n");
+        ptrF->final = novo;
+    }else{
+        (ptrF->final)->dir = novo;
+        ptrF->final = novo;
+    }
 
 }
 
